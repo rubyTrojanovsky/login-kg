@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/splash.dart';
+import 'routes.dart';
 
 void main() => runApp(MyApp());
 
@@ -6,30 +8,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Welcome to Flutter',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          centerTitle: true,
-          title: Text(
-            "Aplikasi pertamaku",
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
+        onGenerateRoute: RouteGenerator.generateRoute,
+        debugShowCheckedModeBanner: false,
+        title: 'Kampus Gratis',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          fontFamily: 'Montserrat',
         ),
-        body: Center(child: const Text('Add')),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            // Add your onPressed code here!
-          },
-          child: Text('Press Here'),
-        ),
-      ),
-    );
+        home: SplashPage());
   }
 }
