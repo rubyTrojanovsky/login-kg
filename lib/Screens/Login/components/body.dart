@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_app/Screens/Login/components/background.dart';
 import 'package:login_app/Screens/Login/components/text_field.dart';
+import 'package:login_app/components/primary_button.dart';
 import 'package:login_app/constants.dart';
 
 class Body extends StatelessWidget {
@@ -11,6 +12,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Background(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -49,6 +51,15 @@ class Body extends StatelessWidget {
                       text: 'Kata Sandi',
                       icon: Icons.lock,
                     ),
+                  ),
+                  PrimaryButton(
+                    text: 'Masuk',
+                    press: () {},
+                    color: kOrange,
+                    textColor: Colors.black,
+                    width: size.width,
+                    shadowColor: Colors.black,
+                    borderColor: kOrange,
                   ),
                 ],
               ),
