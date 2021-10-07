@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_app/Screens/Login/components/background.dart';
+import 'package:login_app/Screens/Login/components/text_field.dart';
 import 'package:login_app/constants.dart';
 
 class Body extends StatelessWidget {
@@ -28,24 +29,29 @@ class Body extends StatelessWidget {
             ],
           ),
           Form(
-            child: Column(
-              children: [
-                TextFormField(
-                  autofocus: true,
-                  autocorrect: true,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    // icon: Icon(Icons.add_a_photo), //Untuk icon di luar field
-                    prefixIcon: Icon(Icons.person), //Untuk icon di dalam field
-                    // prefixText: 'Email',
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: 'Nama Pengguna',
-                    hintStyle: TextStyle(fontFamily: 'Montserrat'),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Column(
+                children: [
+                  LoginTextField(
+                    focus: true,
+                    correct: true,
+                    obscure: false,
+                    text: 'Nama Pengguna',
+                    icon: Icons.person,
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: LoginTextField(
+                      focus: false,
+                      correct: false,
+                      obscure: true,
+                      text: 'Kata Sandi',
+                      icon: Icons.lock,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
