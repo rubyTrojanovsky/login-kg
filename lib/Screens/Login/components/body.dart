@@ -61,6 +61,31 @@ class Body extends StatelessWidget {
                     shadowColor: Colors.black,
                     borderColor: kOrange,
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image(
+                        width: 120,
+                        image: AssetImage('images/thick-line.png'),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        'Atau',
+                        style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Image(
+                        width: 120,
+                        image: AssetImage('images/thick-line.png'),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
