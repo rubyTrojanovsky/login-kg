@@ -14,13 +14,12 @@ class Background extends StatelessWidget {
       height: size.height,
       width: double.infinity,
       child: Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.bottomCenter,
         children: [
           Positioned(
-            bottom: 0,
-            right: 0,
+            // top: 0,
             child: Image(
-              image: AssetImage('assets/images/bottom-right.png'),
+              image: AssetImage('assets/images/mid-1.png'),
             ),
           ),
           child,

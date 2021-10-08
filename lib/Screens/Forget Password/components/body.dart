@@ -1,0 +1,109 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:login_app/Screens/Forget%20Password/components/background.dart';
+import 'package:login_app/components/header_1.dart';
+import 'package:login_app/components/text_field.dart';
+import 'package:login_app/components/primary_button.dart';
+import 'package:login_app/constants.dart';
+
+class Body extends StatelessWidget {
+  Body({
+    Key? key,
+  }) : super(key: key);
+
+  final TextEditingController _emailController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      child: Background(
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              child: HeaderLogin(),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Text(
+                    'Lupa Kata Sandi',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: kBlue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 50),
+                  child: Text(
+                    'Masukkan Email Yang Telah Terdaftar',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: kLightBlue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Form(
+              key: _formKey,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: PrimaryTextField(
+                        focus: false,
+                        correct: false,
+                        obscure: true,
+                        icon: Icons.mail,
+                        text: 'Email',
+                        controller: _emailController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Email harus diisi';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: PrimaryButton(
+                        text: 'Kirim',
+                        press: () {
+                          Navigator.pushNamed(context, '/validasi');
+                        },
+                        color: kOrange,
+                        textColor: Colors.black,
+                        width: size.width,
+                        shadowColor: Colors.black,
+                        borderColor: kOrange,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

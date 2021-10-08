@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_app/Screens/Login/login_screen.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
-import 'package:login_app/Screens/Welcome/components/background.dart';
+import 'package:login_app/components/background.dart';
 import 'package:login_app/components/primary_button.dart';
 import 'package:login_app/constants.dart';
 import 'package:login_app/routes.dart';
@@ -13,7 +13,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Background(
+    return BottomRightBackground(
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -68,7 +68,9 @@ class Body extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: PrimaryButton(
                   text: 'Daftar',
-                  press: () {},
+                  press: () {
+                    Navigator.pushNamed(context, '/register');
+                  },
                   color: Colors.white,
                   textColor: Colors.black,
                   width: size.width * 0.5,
