@@ -41,7 +41,7 @@ class Body extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 80),
+              padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Text(
                 'Para mahasiswa Kampus Gratis yang siap menjadi penerus bangsa Indonesia!',
                 style: TextStyle(
