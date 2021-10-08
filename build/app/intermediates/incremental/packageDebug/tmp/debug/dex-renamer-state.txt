@@ -1,4 +1,4 @@
-#Thu Oct 07 13:31:03 ICT 2021
-base.0=E\:\\flutter-project\\login_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Thu Oct 07 17:11:40 ICT 2021
+base.0=D\:\\Projects\\Flutter\\magang flutter\\Flutter KG\\login-kg\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
