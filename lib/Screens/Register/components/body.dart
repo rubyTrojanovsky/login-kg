@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:login_app/components/background.dart';
 import 'package:login_app/components/header_1.dart';
-import 'package:login_app/Screens/Login/components/icon_btn.dart';
 import 'package:login_app/components/text_field.dart';
 import 'package:login_app/components/primary_button.dart';
 import 'package:login_app/constants.dart';

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:login_app/Screens/Login/login_screen.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
 import 'package:login_app/components/background.dart';
 import 'package:login_app/components/primary_button.dart';
 import 'package:login_app/constants.dart';
-import 'package:login_app/routes.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
