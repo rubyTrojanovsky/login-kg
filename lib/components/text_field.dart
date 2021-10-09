@@ -8,9 +8,9 @@ class PrimaryTextField extends StatelessWidget {
     required this.obscure,
     required this.text,
     required this.icon,
+    required this.keyboardType,
     required this.controller,
     required this.validator,
-    this.keyboardType,
   }) : super(key: key);
   final bool focus, correct, obscure;
   final String text;

@@ -33,6 +33,8 @@ class Body extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
+                //TITLE HALAMAN
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
@@ -44,6 +46,7 @@ class Body extends StatelessWidget {
                     ),
                   ),
                 ),
+
               ],
             ),
             Form(
@@ -53,6 +56,8 @@ class Body extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Column(
                   children: [
+
+                    //NAMA PENGGUNA
                     Padding(
                       padding: const EdgeInsets.only(top: 40),
                       child: PrimaryTextField(
@@ -68,14 +73,17 @@ class Body extends StatelessWidget {
                           }
                           return null;
                         },
+                        keyboardType: TextInputType.text,
                       ),
                     ),
+
+                    //KATA SANDI
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       // ignore: prefer_const_constructors
                       child: PrimaryTextField(
                         focus: false,
-                        correct: false,
+                        correct: true,
                         obscure: true,
                         text: 'Kata Sandi',
                         icon: Icons.lock,
@@ -86,15 +94,19 @@ class Body extends StatelessWidget {
                           }
                           return null;
                         },
+                        keyboardType: TextInputType.visiblePassword,
                       ),
                     ),
+
+                    //TOMBOL MASUK
                     PrimaryButton(
                       text: 'Masuk',
                       press: () {
                         if (_formKey.currentState!.validate()) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Processing Data')),
+                            const SnackBar(content: Text('Login Process')),
                           );
+                          Navigator.pushNamed(context, '/');
                         }
                       },
                       color: kOrange,
@@ -103,6 +115,8 @@ class Body extends StatelessWidget {
                       shadowColor: Colors.black,
                       borderColor: kOrange,
                     ),
+
+                    //LUPA KATA SANDI
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: RichText(
@@ -127,6 +141,7 @@ class Body extends StatelessWidget {
                         ],
                       )),
                     ),
+
                     // TextButton(
                     //   onPressed: () {},
                     //   child: Text(
@@ -162,6 +177,8 @@ class Body extends StatelessWidget {
                 ),
               ],
             ),
+
+            //LOGIN GOOGLE
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Row(
@@ -179,6 +196,8 @@ class Body extends StatelessWidget {
                 ],
               ),
             ),
+
+            //LOGIN FACEBOOK
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -196,6 +215,7 @@ class Body extends StatelessWidget {
                 ],
               ),
             ),
+            
           ],
         ),
       ),

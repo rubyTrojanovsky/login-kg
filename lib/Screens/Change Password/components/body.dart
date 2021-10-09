@@ -5,6 +5,7 @@ import 'package:login_app/components/header_1.dart';
 import 'package:login_app/components/text_field.dart';
 import 'package:login_app/components/primary_button.dart';
 import 'package:login_app/constants.dart';
+import 'package:regexpattern/src/regex_extension.dart';
 
 class Body extends StatelessWidget {
   Body({
@@ -12,8 +13,7 @@ class Body extends StatelessWidget {
   }) : super(key: key);
 
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _repeatPasswordController =
-      TextEditingController();
+  final TextEditingController _repeatPasswordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -32,6 +32,8 @@ class Body extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
+                //TITLE HALAMAN
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Text(
@@ -43,11 +45,14 @@ class Body extends StatelessWidget {
                     ),
                   ),
                 ),
+
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
+                //DESKRIPSI
                 Padding(
                   padding: const EdgeInsets.only(bottom: 50),
                   child: Text(
@@ -59,6 +64,7 @@ class Body extends StatelessWidget {
                     ),
                   ),
                 ),
+
               ],
             ),
             Form(
@@ -68,6 +74,8 @@ class Body extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Column(
                   children: [
+
+                    //KATA SANDI
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: PrimaryTextField(
@@ -78,13 +86,23 @@ class Body extends StatelessWidget {
                         text: 'Kata Sandi',
                         controller: _passwordController,
                         validator: (value) {
-                          if (value == null || value.isEmpty) {
+                          String password = _passwordController.text;
+
+                          if (password == Null || password.isEmpty) {
                             return 'Kata Sandi tidak boleh kosong!';
+                          } else if (password.length < 8) {
+                            return 'Kata Sandi minimal 8 karakter atau lebih!';
+                          } else if (!password.isPasswordNormal1()) { //BELUM FIX, TENTUKAN STANDARISASI DULU (EASY, HARD, DLL ?)
+                            return 'Kekuatan Kata Sandi lemah!';
+                          } else {
+                            return null;
                           }
-                          return null;
                         },
+                        keyboardType: TextInputType.visiblePassword,
                       ),
                     ),
+
+                    //ULANGI KATA SANDI
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: PrimaryTextField(
@@ -95,29 +113,42 @@ class Body extends StatelessWidget {
                         text: 'Ulangi Kata Sandi',
                         controller: _repeatPasswordController,
                         validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Ulangi kata sandi harus diisi!';
-                          } else if (value != _passwordController) {
-                            return 'Kata Sandi tidak sama';
+                          String repeatPassword = _repeatPasswordController.text;
+
+                          if (repeatPassword == Null || repeatPassword.isEmpty) {
+                            return 'Ulangi Kata Sandi tidak boleh kosong';
+                          } else if (value != _passwordController.text) {
+                            return 'Ulangi Kata Sandi tidak sama';
+                          } else {
+                            return null;
                           }
-                          return null;
                         },
+                        keyboardType: TextInputType.visiblePassword,
                       ),
                     ),
+
+                    //TOMBOL KIRIM
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: PrimaryButton(
                         text: 'Kirim',
-                        press: () {
-                          Navigator.pushNamed(context, '/');
-                        },
                         color: kOrange,
                         textColor: Colors.black,
                         width: size.width,
                         shadowColor: Colors.black,
                         borderColor: kOrange,
+                        press:() {
+                          if (_formKey.currentState!.validate()) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text('Reset Successful')),
+                            );
+                            Navigator.pushNamed(context, '/login');
+                          }
+                        },
                       ),
                     ),
+
                   ],
                 ),
               ),

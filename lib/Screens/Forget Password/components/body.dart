@@ -5,6 +5,7 @@ import 'package:login_app/components/header_1.dart';
 import 'package:login_app/components/text_field.dart';
 import 'package:login_app/components/primary_button.dart';
 import 'package:login_app/constants.dart';
+import 'package:regexpattern/src/regex_extension.dart';
 
 class Body extends StatelessWidget {
   Body({
@@ -30,6 +31,8 @@ class Body extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
+                //TITLE HALAMAN
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Text(
@@ -41,11 +44,14 @@ class Body extends StatelessWidget {
                     ),
                   ),
                 ),
+
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
+                //DESKRIPSI
                 Padding(
                   padding: const EdgeInsets.only(bottom: 50),
                   child: Text(
@@ -57,6 +63,7 @@ class Body extends StatelessWidget {
                     ),
                   ),
                 ),
+
               ],
             ),
             Form(
@@ -66,37 +73,53 @@ class Body extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Column(
                   children: [
+
+                    //EMAIL
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: PrimaryTextField(
                         focus: false,
-                        correct: false,
-                        obscure: true,
+                        correct: true,
+                        obscure: false,
                         icon: Icons.mail,
                         text: 'Email',
                         controller: _emailController,
                         validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Email harus diisi';
+                          String email = _emailController.text;
+
+                          if (email == Null || email.isEmpty) {
+                            return 'E-mail tidak boleh kosong';
+                          } else if (!email.isEmail()){
+                            return 'E-mail tidak valid! ';
+                          } else {
+                            return null;
                           }
-                          return null;
                         },
+                        keyboardType: TextInputType.emailAddress,
                       ),
                     ),
+
+                    //TOMBOL KIRIM
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: PrimaryButton(
                         text: 'Kirim',
-                        press: () {
-                          Navigator.pushNamed(context, '/validasi');
-                        },
                         color: kOrange,
                         textColor: Colors.black,
                         width: size.width,
                         shadowColor: Colors.black,
                         borderColor: kOrange,
+                        press: () {
+                          if (_formKey.currentState!.validate()) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Sending Code')),
+                            );
+                            Navigator.pushNamed(context, '/validasi');
+                          }
+                        },
                       ),
                     ),
+
                   ],
                 ),
               ),

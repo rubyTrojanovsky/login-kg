@@ -5,13 +5,14 @@ import 'package:login_app/components/header_1.dart';
 import 'package:login_app/components/text_field.dart';
 import 'package:login_app/components/primary_button.dart';
 import 'package:login_app/constants.dart';
+import 'package:regexpattern/src/regex_extension.dart';
 
 class Body extends StatelessWidget {
   Body({
     Key? key,
   }) : super(key: key);
 
-  final TextEditingController _kodeController = TextEditingController();
+  final TextEditingController _codeController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -30,6 +31,8 @@ class Body extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
+                //TITLE HALAMAN
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Text(
@@ -41,11 +44,14 @@ class Body extends StatelessWidget {
                     ),
                   ),
                 ),
+
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
+                //DESKRIPSI
                 Padding(
                   padding: const EdgeInsets.only(bottom: 50),
                   child: Text(
@@ -57,6 +63,7 @@ class Body extends StatelessWidget {
                     ),
                   ),
                 ),
+
               ],
             ),
             Form(
@@ -66,6 +73,8 @@ class Body extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: Column(
                   children: [
+
+                    //KODE VALIDASI
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: PrimaryTextField(
@@ -74,21 +83,38 @@ class Body extends StatelessWidget {
                         obscure: true,
                         icon: Icons.mail,
                         text: 'Kode',
-                        controller: _kodeController,
+                        controller: _codeController,
                         validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Kode harus diisi!';
+                          // if (value == null || value.isEmpty) {
+                          //   return 'Masukan Kode!';
+                          // }
+                          // return null;
+                          String code = _codeController.text;
+
+                          if (code == Null || code.isEmpty) {
+                            return 'Masukan Kode!';
+                          } else if (!code.isNumeric()) {
+                            return 'Kode berupa numerik!';
+                          } else {
+                            return null;
                           }
-                          return null;
                         },
+                        keyboardType: TextInputType.number,
                       ),
                     ),
+                    
+                    //TOMBOL KIRIM
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: PrimaryButton(
                         text: 'Kirim',
                         press: () {
-                          Navigator.pushNamed(context, '/change-password');
+                          if (_formKey.currentState!.validate()) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Code Validation Successful')),
+                            );
+                            Navigator.pushNamed(context, '/change-password');
+                          }
                         },
                         color: kOrange,
                         textColor: Colors.black,
@@ -97,6 +123,7 @@ class Body extends StatelessWidget {
                         borderColor: kOrange,
                       ),
                     ),
+                    
                   ],
                 ),
               ),
