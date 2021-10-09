@@ -17,9 +17,9 @@ class Background extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         children: [
           Positioned(
-            bottom: 50,
+            bottom: 20,
             child: Image(
-              image: AssetImage('assets/images/mid-1.png'),
+              image: AssetImage('assets/images/mid-2.png'),
               width: size.width,
             ),
           ),

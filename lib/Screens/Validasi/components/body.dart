@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:login_app/components/background.dart';
+import 'package:login_app/Screens/Validasi/components/background.dart';
 import 'package:login_app/components/header_1.dart';
 import 'package:login_app/components/text_field.dart';
 import 'package:login_app/components/primary_button.dart';
@@ -20,7 +20,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
-      child: MainBackground(
+      child: Background(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
