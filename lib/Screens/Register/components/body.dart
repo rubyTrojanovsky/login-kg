@@ -75,12 +75,12 @@ class Body extends StatelessWidget {
 
                           if (username == Null || username.isEmpty) {
                             return 'Nama Pengguna tidak boleh kosong!';
+                          } else if (!username.isUsername()) {
+                            return 'Nama Pengguna tidak valid!';
                           } else if (username.length < 8) {
                             return 'Nama Pengguna minimal 8 karakter!';
                           } else if (username.length > 30) {
                             return 'Nama Pengguna maximal 30 karakter!';
-                          } else if (!username.isUsername()) {
-                            return 'Nama Pengguna tidak valid!';
                           } else {
                             return null;
                           }
