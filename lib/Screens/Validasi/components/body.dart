@@ -52,14 +52,18 @@ class Body extends StatelessWidget {
               children: [
 
                 //DESKRIPSI
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 50),
-                  child: Text(
-                    'Masukkan kode yang diberikan melalui E-mail anda yang terdaftar',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: kLightBlue,
+                SizedBox(
+                  width: size.width*0.6,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 50),
+                    child: Text(
+                      'Masukkan kode yang diberikan melalui E-mail anda yang terdaftar',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: kLightBlue,
+                      ),
                     ),
                   ),
                 ),
